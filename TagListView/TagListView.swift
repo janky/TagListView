@@ -16,6 +16,8 @@ import UIKit
 @IBDesignable
 open class TagListView: UIView {
     
+    public var showVertical:Bool = false
+    
     @IBInspectable open dynamic var textColor: UIColor = UIColor.white {
         didSet {
             for tagView in tagViews {
@@ -240,7 +242,7 @@ open class TagListView: UIView {
             tagView.frame.size = tagView.intrinsicContentSize
             tagViewHeight = tagView.frame.height
             
-            if currentRowTagCount == 0 || currentRowWidth + tagView.frame.width > frame.width {
+            if (currentRowTagCount == 0 || currentRowWidth + tagView.frame.width > frame.width) && !showVertical {
                 currentRow += 1
                 currentRowWidth = 0
                 currentRowTagCount = 0
